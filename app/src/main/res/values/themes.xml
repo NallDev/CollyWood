@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CollyWood" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.CollyWood" parent="Base.Theme.CollyWood" />
+
+    <style name="BottomNavigationView">
+        <item name="colorSecondaryContainer">#EBCFEA</item>
+    </style>
+</resources>

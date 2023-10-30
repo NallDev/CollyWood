@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">CollyWood</string>
+    <string name="_2022_collywood_productions">© 2022 Collywood Productions</string>
+    <string name="login_now">Login Now</string>
+    <string name="skip_now">Skip Now</string>
+    <string name="onboarding_subtitle_1">Pay Per Movie and get free 24hr Access</string>
+    <string name="onboarding_subtitle_2">Listen on the go free</string>
+    <string name="onboarding_subtitle_3">Get weekly access and watch a variety of</string>
+    <string name="onboarding_title_1">Collywood Movies</string>
+    <string name="onboarding_title_2">Digital Audio Movies</string>
+    <string name="onboarding_title_3">Collywood Series</string>
+    <string name="email_address">Email Address</string>
+    <string name="mobile_phone">Mobile Phone</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="create_now">Create Now</string>
+    <string name="create_account_title">Create\nAccount</string>
+    <string name="hello_welcome">Hello,\nWelcome!</string>
+    <string name="subtitle_reg">Enter your information below or continue with social media account</string>
+    <string name="subtitle_log">Please login to continue</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="digital_audio_movies">Digital Audio Movies</string>
+    <string name="movies">Movies</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="profile">Profile</string>
+    <string name="series">Series</string>
+</resources>
