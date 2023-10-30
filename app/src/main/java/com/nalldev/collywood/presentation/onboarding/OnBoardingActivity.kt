@@ -9,6 +9,7 @@ import com.nalldev.collywood.presentation.adapter.OnboardingPagerAdapter
 import com.nalldev.collywood.presentation.logres.LoginRegisterActivity
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>() {
     override fun getViewBinding() = ActivityOnBoardingBinding.inflate(layoutInflater)
@@ -17,11 +18,23 @@ class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>() {
         OnboardingPagerAdapter(this, this)
     }
 
+    private val onBoardingViewModel : OnBoardingViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initObserver()
         initOnce()
         initEventListener()
+    }
+
+    private fun initObserver() {
+        if (onBoardingViewModel.getOnBoardingSaw()) {
+            Intent(this@OnBoardingActivity, LoginRegisterActivity::class.java).also {
+                startActivity(it)
+                finish()
+            }
+        }
     }
 
     private fun initOnce() {
@@ -42,6 +55,7 @@ class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>() {
         binding.apply {
             btnNext.setOnClickListener {
                 if (vpContent.currentItem > vpContent.childCount) {
+                    onBoardingViewModel.onBoardingSaw()
                     Intent(this@OnBoardingActivity, LoginRegisterActivity::class.java).also {
                         startActivity(it)
                         finish()
@@ -52,6 +66,7 @@ class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>() {
             }
 
             btnToLogin.setOnClickListener {
+                onBoardingViewModel.onBoardingSaw()
                 Intent(this@OnBoardingActivity, LoginRegisterActivity::class.java).also {
                     startActivity(it)
                     finish()

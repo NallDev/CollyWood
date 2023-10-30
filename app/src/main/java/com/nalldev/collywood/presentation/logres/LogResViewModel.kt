@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nalldev.collywood.data.db.SessionManager
 import com.nalldev.collywood.domain.model.UserModel
+import com.nalldev.collywood.domain.repository.SessionRepository
 import com.nalldev.collywood.domain.repository.UserRepository
 import kotlinx.coroutines.launch
 
-class LogResViewModel (private val userRepository: UserRepository, private val sessionManager: SessionManager) : ViewModel() {
+class LogResViewModel (private val userRepository: UserRepository, private val sessionManager: SessionRepository) : ViewModel() {
 
     private val _loginResult: MutableLiveData<UserModel?> = MutableLiveData()
     val loginResult: LiveData<UserModel?> = _loginResult
