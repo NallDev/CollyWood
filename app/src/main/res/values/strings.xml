@@ -28,4 +28,7 @@
     <string name="favorite">Favorite</string>
     <string name="profile">Profile</string>
     <string name="series">Series</string>
+    <string name="live_tv">Live TV</string>
+    <string name="soon">Soon</string>
+    <string name="logout">Logout</string>
 </resources>

@@ -42,6 +42,11 @@ class CaraouselFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     companion object {
         private const val ARG_PARAM1 = "param1"
         fun newInstance(param1: ResultsSeries) =

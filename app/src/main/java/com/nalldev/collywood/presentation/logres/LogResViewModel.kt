@@ -25,12 +25,15 @@ class LogResViewModel (private val userRepository: UserRepository, private val s
     }
 
     private fun isLogin() {
-        _isUserLogin.postValue(sessionManager.getIsLogin())
+        viewModelScope.launch {
+            _isUserLogin.postValue(sessionManager.getIsLogin())
+        }
     }
 
-    fun setUserLogin(userModel: UserModel) {
-        sessionManager.setIsLogin(true)
-        sessionManager.setUser(userModel)
+    fun setUserLogin() {
+        viewModelScope.launch {
+            sessionManager.setIsLogin(true)
+        }
     }
 
     fun login(username: String, password: String) {

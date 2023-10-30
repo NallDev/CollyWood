@@ -37,7 +37,7 @@ class LoginRegisterActivity : BaseActivity<ActivityLoginRegisterBinding>() {
             loginResult.observe(this@LoginRegisterActivity) {user ->
                 if (user != null) {
                     showToast("Login Berhasil")
-                    setUserLogin(user)
+                    setUserLogin()
                     Intent(this@LoginRegisterActivity, MainActivity::class.java).also {
                         startActivity(it)
                         finish()

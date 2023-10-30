@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    tools:context=".presentation.movies.screens.ProfileFragment">
+    tools:context=".presentation.movies.screens.LiveTvFragment">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
@@ -16,25 +16,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="login-hello.json"
+        app:lottie_fileName="data_not_found.json"
         app:lottie_loop="true" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_logout"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:layout_width="@dimen/_100sdp"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_40sdp"
         android:fontFamily="@font/mazzard_bold"
-        android:letterSpacing="0.04"
-        android:text="@string/logout"
+        android:text="@string/soon"
         android:textColor="@color/purple"
+        android:textSize="@dimen/_24ssp"
         android:layout_marginTop="@dimen/_minus24sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView"
-        app:shapeAppearance="?attr/shapeAppearanceCornerSmall"
-        app:strokeColor="@color/purple"
-        app:strokeWidth="@dimen/_2sdp" />
+        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout >

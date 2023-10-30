@@ -29,10 +29,12 @@ class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>() {
     }
 
     private fun initObserver() {
-        if (onBoardingViewModel.getOnBoardingSaw()) {
-            Intent(this@OnBoardingActivity, LoginRegisterActivity::class.java).also {
-                startActivity(it)
-                finish()
+        onBoardingViewModel.getOnBoardingSaw().observe(this) { wasSaw ->
+            if (wasSaw) {
+                Intent(this@OnBoardingActivity, LoginRegisterActivity::class.java).also {
+                    startActivity(it)
+                    finish()
+                }
             }
         }
     }

@@ -6,12 +6,12 @@
         android:title="@string/home"/>
 
     <item
-        android:id="@+id/favoriteFragment"
-        android:icon="@drawable/favorite"
-        android:title="@string/favorite"/>
+        android:id="@+id/liveTvFragment"
+        android:icon="@drawable/display"
+        android:title="@string/live_tv"/>
 
     <item
         android:id="@+id/profileFragment"
-        android:icon="@drawable/profile"
+        android:icon="@drawable/user"
         android:title="@string/profile"/>
 </menu>

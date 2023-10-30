@@ -33,6 +33,7 @@
         android:layout_marginBottom="@dimen/_16sdp"
         app:strokeWidth="0dp"
         app:cardElevation="@dimen/_16sdp"
+        app:cardCornerRadius="@dimen/_24sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -46,7 +47,7 @@
             app:itemIconTint="@color/color_state_nav"
             app:itemTextColor="@color/color_state_nav"
             app:menu="@menu/menu_nav"
-            app:itemPaddingTop="@dimen/_10sdp"
+            app:itemPaddingTop="@dimen/_12sdp"
             app:itemPaddingBottom="@dimen/_12sdp"
             app:labelVisibilityMode="labeled" />
 
