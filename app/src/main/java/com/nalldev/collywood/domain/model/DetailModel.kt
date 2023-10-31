@@ -5,10 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class DetailModel(
-    val posterPath : String,
-    val name : String,
-    val overview : String,
-    val date : String,
-    val vote : String,
-    val genre : List<String>,
+    val posterPath : String = "",
+    val title : String = "",
+    val overview : String = "",
+    val date : String = "",
+    val vote : String = "",
+    val genre : List<String> = listOf(),
 ) : Parcelable

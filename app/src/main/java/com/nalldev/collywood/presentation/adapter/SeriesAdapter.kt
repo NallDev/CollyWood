@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nalldev.collywood.databinding.ItemSeriesBinding
+import com.nalldev.collywood.domain.listener.OnItemClickListener
 import com.nalldev.collywood.domain.model.ResultsSeries
+import com.nalldev.collywood.presentation.util.Component.itemToModel
 import com.nalldev.collywood.presentation.util.DataMovies
 
-class SeriesAdapter : RecyclerView.Adapter<SeriesAdapter.ViewHolder>() {
+class SeriesAdapter(private val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<SeriesAdapter.ViewHolder>() {
     private lateinit var contextAdapter : Context
 
     private val diffCallback = object : DiffUtil.ItemCallback<ResultsSeries>() {
@@ -63,6 +65,10 @@ class SeriesAdapter : RecyclerView.Adapter<SeriesAdapter.ViewHolder>() {
                     val params = binding.root.layoutParams as ViewGroup.MarginLayoutParams
                     params.marginEnd = 40
                     binding.root.layoutParams = params
+                }
+
+                root.setOnClickListener {
+                    onItemClickListener.onItemClick(itemToModel(item))
                 }
             }
         }

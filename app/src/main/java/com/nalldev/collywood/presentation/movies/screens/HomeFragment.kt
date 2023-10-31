@@ -1,5 +1,6 @@
 package com.nalldev.collywood.presentation.movies.screens
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,35 +10,51 @@ import android.widget.Toast
 import androidx.core.view.isInvisible
 import com.nalldev.collywood.R
 import com.nalldev.collywood.databinding.FragmentHomeBinding
+import com.nalldev.collywood.domain.listener.OnItemClickListener
+import com.nalldev.collywood.domain.model.DetailModel
 import com.nalldev.collywood.presentation.adapter.CaraouselPagerAdapter
 import com.nalldev.collywood.presentation.adapter.DigitalAdapter
 import com.nalldev.collywood.presentation.adapter.MoviesAdapter
 import com.nalldev.collywood.presentation.adapter.SeriesAdapter
+import com.nalldev.collywood.presentation.detail.DetailActivity
 import com.nalldev.collywood.presentation.movies.MoviesViewModel
 import com.nalldev.collywood.presentation.util.RequestState
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(){
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     private val moviesAdapter by lazy {
-        MoviesAdapter()
+        MoviesAdapter(onClickItem)
     }
 
     private val digitalAdapter by lazy {
-        DigitalAdapter()
+        DigitalAdapter(onClickItem)
     }
 
     private val seriesAdapter by lazy {
-        SeriesAdapter()
+        SeriesAdapter(onClickItem)
     }
 
     private lateinit var caraouselPager : CaraouselPagerAdapter
 
     private val moviesViewModel : MoviesViewModel by viewModel()
+
+    private val onClickItem = object : OnItemClickListener{
+        override fun onItemClick(data: DetailModel?) {
+            activity?.let { activity->
+                data?.let { data ->
+                    Intent(activity, DetailActivity::class.java).also { intent ->
+                        intent.putExtra(DetailActivity.PARAMS, data)
+                        startActivity(intent)
+                    }
+                }
+            }
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

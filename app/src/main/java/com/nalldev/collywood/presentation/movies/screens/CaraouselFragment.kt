@@ -1,5 +1,6 @@
 package com.nalldev.collywood.presentation.movies.screens
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import com.bumptech.glide.Glide
 import com.nalldev.collywood.R
 import com.nalldev.collywood.databinding.FragmentCaraouselBinding
 import com.nalldev.collywood.domain.model.ResultsSeries
+import com.nalldev.collywood.presentation.detail.DetailActivity
+import com.nalldev.collywood.presentation.util.Component.itemToModel
 
 class CaraouselFragment : Fragment() {
     private var _binding: FragmentCaraouselBinding? = null
@@ -38,6 +41,15 @@ class CaraouselFragment : Fragment() {
                 Glide.with(it)
                     .load("https://image.tmdb.org/t/p/w600_and_h600_bestv2${data.posterPath}")
                     .into(ivContent)
+            }
+
+            btnWatch.setOnClickListener {
+                activity?.let { activity ->
+                    Intent(activity, DetailActivity::class.java).also {
+                        it.putExtra(DetailActivity.PARAMS, itemToModel(data))
+                        startActivity(it)
+                    }
+                }
             }
         }
     }

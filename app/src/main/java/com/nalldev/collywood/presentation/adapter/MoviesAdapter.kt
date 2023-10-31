@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nalldev.collywood.databinding.ItemMoviesBinding
+import com.nalldev.collywood.domain.listener.OnItemClickListener
 import com.nalldev.collywood.domain.model.ResultsMovie
-import com.nalldev.collywood.presentation.util.Component
+import com.nalldev.collywood.presentation.util.Component.changeDateToYear
+import com.nalldev.collywood.presentation.util.Component.itemToModel
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
-    private lateinit var contextAdapter : Context
+class MoviesAdapter(private val onItemClickListener: OnItemClickListener) :
+    RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+    private lateinit var contextAdapter: Context
 
     private val diffCallback = object : DiffUtil.ItemCallback<ResultsMovie>() {
         override fun areItemsTheSame(oldItem: ResultsMovie, newItem: ResultsMovie): Boolean {
@@ -46,13 +49,16 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
                     .into(ivContent)
 
                 tvTitle.text = item.title
-                tvYear.text = Component.changeDateToYear(item.releaseDate)
-
+                tvYear.text = changeDateToYear(item.releaseDate)
 
                 if (position == itemCount - 1) {
                     val params = binding.root.layoutParams as ViewGroup.MarginLayoutParams
                     params.marginEnd = 40
                     binding.root.layoutParams = params
+                }
+
+                root.setOnClickListener {
+                    onItemClickListener.onItemClick(itemToModel(item))
                 }
             }
         }

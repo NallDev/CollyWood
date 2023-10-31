@@ -17,7 +17,7 @@ class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewMod
             val response = moviesRepository.fetchMovies()
             emit(RequestState.Success(response))
         } catch (e : HttpException) {
-            emit(RequestState.Error(e.message()))
+            e.message?.let { RequestState.Error(it) }?.let { emit(it) }
         }
     }
 
@@ -27,7 +27,7 @@ class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewMod
             val response = moviesRepository.fetchDigital()
             emit(RequestState.Success(response))
         } catch (e : HttpException) {
-            emit(RequestState.Error(e.message()))
+            e.message?.let { RequestState.Error(it) }?.let { emit(it) }
         }
     }
 
@@ -37,7 +37,7 @@ class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewMod
             val response = moviesRepository.fetchAiringToday()
             emit(RequestState.Success(response))
         } catch (e : HttpException) {
-            emit(RequestState.Error(e.message()))
+            e.message?.let { RequestState.Error(it) }?.let { emit(it) }
         }
     }
 
@@ -47,7 +47,7 @@ class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewMod
             val response = moviesRepository.fetchSeries()
             emit(RequestState.Success(response))
         } catch (e : HttpException) {
-            emit(RequestState.Error(e.message()))
+            e.message?.let { RequestState.Error(it) }?.let { emit(it) }
         }
     }
 }

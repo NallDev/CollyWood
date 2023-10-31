@@ -31,4 +31,9 @@
     <string name="live_tv">Live TV</string>
     <string name="soon">Soon</string>
     <string name="logout">Logout</string>
+    <string name="release_date">Release date</string>
+    <string name="genre">Genre</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="watch_trailer">Watch Trailer</string>
+    <string name="watch_movie">Watch Movie</string>
 </resources>

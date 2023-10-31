@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nalldev.collywood.databinding.ItemDigitalBinding
+import com.nalldev.collywood.domain.listener.OnItemClickListener
 import com.nalldev.collywood.domain.model.ResultsMovie
-import com.nalldev.collywood.presentation.util.Component
+import com.nalldev.collywood.presentation.util.Component.changeDateToYear
+import com.nalldev.collywood.presentation.util.Component.itemToModel
 import com.nalldev.collywood.presentation.util.DataMovies
 
-class DigitalAdapter : RecyclerView.Adapter<DigitalAdapter.ViewHolder>() {
+class DigitalAdapter(private val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<DigitalAdapter.ViewHolder>() {
     private lateinit var contextAdapter : Context
 
     private val diffCallback = object : DiffUtil.ItemCallback<ResultsMovie>() {
@@ -59,12 +61,16 @@ class DigitalAdapter : RecyclerView.Adapter<DigitalAdapter.ViewHolder>() {
                 }
 
                 tvTitle.text = item.title
-                tvYear.text = Component.changeDateToYear(item.releaseDate)
+                tvYear.text = changeDateToYear(item.releaseDate)
 
                 if (position == itemCount - 1) {
                     val params = binding.root.layoutParams as ViewGroup.MarginLayoutParams
                     params.marginEnd = 40
                     binding.root.layoutParams = params
+                }
+
+                root.setOnClickListener {
+                    onItemClickListener.onItemClick(itemToModel(item))
                 }
             }
         }
