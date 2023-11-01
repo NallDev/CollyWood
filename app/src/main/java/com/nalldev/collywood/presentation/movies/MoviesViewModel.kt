@@ -7,6 +7,7 @@ import com.nalldev.collywood.domain.model.MovieModel
 import com.nalldev.collywood.domain.model.SeriesModel
 import com.nalldev.collywood.domain.repository.MoviesRepository
 import com.nalldev.collywood.presentation.util.RequestState
+import okio.IOException
 import retrofit2.HttpException
 
 class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewModel() {
@@ -16,8 +17,19 @@ class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewMod
         try {
             val response = moviesRepository.fetchMovies()
             emit(RequestState.Success(response))
-        } catch (e : HttpException) {
-            e.message?.let { RequestState.Error(it) }?.let { emit(it) }
+        } catch (e: Exception) {
+            val errorMessage = when (e) {
+                is IOException -> "No internet connection"
+                is HttpException -> {
+                    when (e.code()) {
+                        in 400..499 -> "Client error occurred"
+                        in 500..599 -> "Server error occurred"
+                        else -> "An error occurred"
+                    }
+                }
+                else -> "An error occurred"
+            }
+            emit(RequestState.Error(errorMessage))
         }
     }
 
@@ -26,8 +38,19 @@ class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewMod
         try {
             val response = moviesRepository.fetchDigital()
             emit(RequestState.Success(response))
-        } catch (e : HttpException) {
-            e.message?.let { RequestState.Error(it) }?.let { emit(it) }
+        } catch (e: Exception) {
+            val errorMessage = when (e) {
+                is IOException -> "No internet connection"
+                is HttpException -> {
+                    when (e.code()) {
+                        in 400..499 -> "Client error occurred"
+                        in 500..599 -> "Server error occurred"
+                        else -> "An error occurred"
+                    }
+                }
+                else -> "An error occurred"
+            }
+            emit(RequestState.Error(errorMessage))
         }
     }
 
@@ -36,8 +59,19 @@ class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewMod
         try {
             val response = moviesRepository.fetchAiringToday()
             emit(RequestState.Success(response))
-        } catch (e : HttpException) {
-            e.message?.let { RequestState.Error(it) }?.let { emit(it) }
+        } catch (e: Exception) {
+            val errorMessage = when (e) {
+                is IOException -> "No internet connection"
+                is HttpException -> {
+                    when (e.code()) {
+                        in 400..499 -> "Client error occurred"
+                        in 500..599 -> "Server error occurred"
+                        else -> "An error occurred"
+                    }
+                }
+                else -> "An error occurred"
+            }
+            emit(RequestState.Error(errorMessage))
         }
     }
 
@@ -46,8 +80,19 @@ class MoviesViewModel (private val moviesRepository: MoviesRepository) : ViewMod
         try {
             val response = moviesRepository.fetchSeries()
             emit(RequestState.Success(response))
-        } catch (e : HttpException) {
-            e.message?.let { RequestState.Error(it) }?.let { emit(it) }
+        } catch (e: Exception) {
+            val errorMessage = when (e) {
+                is IOException -> "No internet connection"
+                is HttpException -> {
+                    when (e.code()) {
+                        in 400..499 -> "Client error occurred"
+                        in 500..599 -> "Server error occurred"
+                        else -> "An error occurred"
+                    }
+                }
+                else -> "An error occurred"
+            }
+            emit(RequestState.Error(errorMessage))
         }
     }
 }
